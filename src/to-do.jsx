@@ -24,8 +24,7 @@ const Todo = (props) => {
         if(newTasks.trim() !== "") {
             setTasks((todo)=> [...todo, newTasks])
             setNewTasks("")
-        }
-        
+        }   
     }
     
     console.log(tasks)
@@ -36,24 +35,23 @@ const Todo = (props) => {
     }
 
     return(
-        
-        <div className="font-outfit flex flex-col items-center min-h-screen text-white bg-indigo-950">
-
-        <h1 className="text-5xl text-center mt-20">To-Do-List</h1>
-        <div className="m-10 flex ">
-            <input value={newTasks} onChange={(e)=> handleDisplay(e)} placeholder="Enter your task " className="text-black text-xl text-center border-solid border-orange-700 border-2 rounded-xl h-12 w-96 focus:outline-none p-8 pr-20 pl-20" type='text'/>
-            <button onClick={addButton} className=" ml-4 text-3xl border-solid rounded-xl bg-green-600 hover:bg-green-700 px-6 py-3">Add</button>
+        <div className="font-outfit flex flex-col items-center min-h-screen text-white bg-indigo-950 sm:px-6 md:px-8 lg:px-10">
+        <h1 className="text-4xl sm:text-5xl text-center mt-20 sm:mt-20">To-Do-List</h1>
+        <div className="m-6 flex flex-col sm:flex-row items-center">
+            <input value={newTasks} onChange={(e)=> handleDisplay(e)} placeholder="Enter your task " className="text-black text-lg sm:text-xl text-center border-solid border-orange-700 border-2 rounded-xl h-10 sm:h-12 w-full sm:w-96 focus:outline-none p-4 sm:p-8" type='text'/>
+            <button onClick={addButton} className=" mt-4 sm:mt-0 sm:ml-4 text-xl sm:text-2xl md:text-3xl border-solid rounded-xl bg-green-600 hover:bg-green-700 px-6 py-3">Add</button>
         </div>
 
-        <div className=" rounded-2xl w-auto px-24 py-7">
-            <ul className="flex flex-col text-4xl"> 
+        <div className=" rounded-2xl w-full sm:w-auto px-4 sm:px-10 py-7">
+            <ul className="flex flex-col text-xl sm:text-2xl md:text-4xl"> 
                 {tasks.map((tasks, index)=> {
-                     return  <li onClick={(e)=> toDoListsItem(e)} className="flex justify-between mb-5 border-solid border-white border-2 rounded-2xl bg-white text-black px-24 py-4 cursor-pointer" key={index}>{tasks} <img onClick={()=> deleteBtn(index)} className="w-10 ml-5 rounded-lg cursor-pointer bg-red-300 hover:bg-red-800" src={trash}/></li>
+                     return  <li onClick={(e)=> toDoListsItem(e)} className="flex justify-between mb-5 border-solid border-white border-2 rounded-2xl  bg-white text-black px-4 sm:px-8 md:px-24 py-4 cursor-pointer" key={index}>{tasks}  
+                                <img onClick={()=> deleteBtn(index)} className="w-8 sm:w-10 ml-4 rounded-lg cursor-pointer bg-red-300 hover:bg-red-800" src={trash}/>
+                            </li>
                 }     
                 )}
             </ul>
         </div>
-        
     </div>
 
     )
